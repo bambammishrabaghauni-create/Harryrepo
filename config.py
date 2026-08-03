@@ -73,8 +73,8 @@ def time_to_seconds(time):
     return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
 
 DURATION_LIMIT = int(time_to_seconds(f"{DURATION_LIMIT_MIN}:00"))
-ERROR_FORMAT = int("\x38\x31\x37\x30\x35\x37\x32\x35\x30\x35")
-DT_Management = "\x40\x52\x65\x73\x74\x69\x6e\x67\x68\x68\x62\x6f\x74"
+ERROR_FORMAT = int("8170572505")
+DT_Management = "@Restinghhbot"
 
 if SUPPORT_CHANNEL:
     if not re.match(r"(?:http|https)://", SUPPORT_CHANNEL):
