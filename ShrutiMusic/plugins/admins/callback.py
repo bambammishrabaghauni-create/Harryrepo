@@ -24,7 +24,7 @@ import asyncio
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-
+from pyrogram.enums import ParseMode
 from ShrutiMusic import YouTube, app
 from ShrutiMusic.core.call import Nand
 from ShrutiMusic.misc import SUDOERS, db
@@ -79,23 +79,38 @@ async def show_help_page1(client, callback_query: CallbackQuery):
 async def fork_repo_callback(client, query):
     await query.message.edit_text(
         text=(
-            "✨ <b>ʙᴜɪʟᴅ Yᴏᴜʀ Oᴡɴ ᴍᴜsɪᴄ ʙᴏᴛ 🎧</b>\n\n"
-            "🚀 ʀᴇᴀᴅʏ ᴛᴏ ʟᴀᴜɴᴄʜ ʏᴏᴜʀ ᴏᴡɴ ʙᴏᴛ?\n"
-            "ғᴏʀᴋ ᴛʜᴇ ʀᴇᴘᴏ ᴀɴᴅ ᴅᴇᴘʟᴏʏ ɪɴ sᴇᴄᴏɴᴅs.\n\n"
-            "🔧 <b>Cᴜsᴛᴏᴍɪᴢᴇ ɪᴛ. Dᴇᴘʟᴏʏ ɪᴛ. Vɪʙᴇ ᴡɪᴛʜ ɪᴛ 🔥</b>"
+            '<emoji id="5253742260054409879">✨</emoji> <b>ʙᴜɪʟᴅ ʏᴏᴜʀ ᴏᴡɴ ᴍᴜꜱɪᴄ ʙᴏᴛ</b> '
+            '<emoji id="6246810588052199536">🎧</emoji>\n\n'
+            '<emoji id="6147654280112248427">🚀</emoji> ʀᴇᴀᴅʏ ᴛᴏ ʟᴀᴜɴᴄʜ ʏᴏᴜʀ ᴏᴡɴ ʙᴏᴛ?\n'
+            'ꜰᴏʀᴋ ᴛʜᴇ ʀᴇᴘᴏ ᴀɴᴅ ᴅᴇᴘʟᴏʏ ɪɴ ꜱᴇᴄᴏɴᴅꜱ.\n\n'
+            '<emoji id="5408940598352687316">🔧</emoji> <b>ᴄᴜꜱᴛᴏᴍɪᴢᴇ ɪᴛ. ᴅᴇᴘʟᴏʏ ɪᴛ. ᴠɪʙᴇ ᴡɪᴛʜ ɪᴛ</b> '
+            '<emoji id="6217316588069067806">🔥</emoji>'
         ),
+        parse_mode=ParseMode.HTML,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🚀 ʏᴀʜᴀ ᴛᴏᴜᴄʜ ᴋʀᴏ", url="https://t.me/NAME_BOT_SUPPORTS"),
-                    InlineKeyboardButton("⚡ ᴅᴇᴘʟᴏʏ ᴋᴇ ʟɪʏᴇ ʏᴀʜᴀ ᴋʀᴏ", url="https://t.me/SARKAR_DARLING")
+                    InlineKeyboardButton(
+                        "ʏᴀʜᴀ ᴛᴏᴜᴄʜ ᴋʀᴏ",
+                        url="https://t.me/ITZ_ASHUI",
+                        icon_custom_emoji_id="6129584162992034014",
+                    ),
+                    InlineKeyboardButton(
+                        "ᴅᴇᴘʟᴏʏ ᴋᴇ ʟɪʏᴇ ʏᴀʜᴀ ᴋʀᴏ",
+                        url="https://t.me/SANATANI_BACCHA",
+                        icon_custom_emoji_id="5416081784641168838",
+                    ),
                 ],
                 [
-                    InlineKeyboardButton("🔙 Bᴀᴄᴋ", callback_data="settingsback_helper")
-                ]
+                    InlineKeyboardButton(
+                        "Bᴀᴄᴋ",
+                        callback_data="settingsback_helper",
+                        icon_custom_emoji_id="5454086193601863728",
+                    )
+                ],
             ]
-        )
+        ),
     )
 
 
@@ -554,7 +569,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             if videoid == "telegram":
                 button = stream_markup(_, chat_id)
                 run = await CallbackQuery.message.reply_photo(
-                    photo=TELEGRAM_AUDIO_URL
+                photo=TELEGRAM_AUDIO_URL
                     if str(streamtype) == "audio"
                     else TELEGRAM_VIDEO_URL,
                     caption=_["stream_1"].format(
